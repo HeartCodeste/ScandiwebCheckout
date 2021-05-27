@@ -1,0 +1,104 @@
+.CheckoutProgress {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--secondary-base-color);
+  padding-bottom: calc(2rem + var(--breadcrumbs-height));
+
+  &-Element {
+    flex: 1;
+    background-color: var(--placeholder-gradient-color);
+    height: 0.5rem;
+    border-radius: 0.25rem;
+    &_Left {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      flex: 2;
+    }
+    &_Right {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      flex: 2;
+    }
+  }
+
+  &-Bar {
+    background-color: var(--primary-base-color);
+    width: 0;
+    height: 100%;
+    border-radius: 0.25rem;
+    transition: width 1s;
+    &_Left {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    &_Right {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    &_Active {
+      width: 100%;
+    }
+  }
+
+  &-Step {
+    margin: 0 1rem;
+    position: relative;
+  }
+
+  &-Number {
+    position: relative;
+    color: var(--secondary-dark-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 3.5rem;
+    height: 3.5rem;
+    background-color: var(--placeholder-gradient-color);
+    transition: background-color 1s 1s, color 1s 1s;
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 150ms ease-in 1s;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      left: 8px;
+      width: 12px;
+      height: 6px;
+      transform: rotate(135deg) translateX(-5px);
+      border-right: 2px solid var(--secondary-base-color);
+      border-top: 2px solid var(--secondary-base-color);
+    }
+
+    &_Active {
+      background-color: var(--primary-base-color);
+      color: var(--secondary-base-color);
+    }
+    &_Checked {
+      color: transparent;
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  &-Title {
+    position: absolute;
+    top: 4.5rem;
+    left: 1.75rem;
+    transform: translate(-50%);
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+    color: var(--secondary-dark-color);
+    transition: color 1s 1s;
+
+    &_Active {
+      color: var(--body-content-color);
+    }
+  }
+}
